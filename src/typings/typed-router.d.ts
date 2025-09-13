@@ -32,7 +32,7 @@ declare module "vue-router/auto-routes" {
     "_builtinLogin": RouteRecordInfo<"_builtinLogin", "/_builtin/login", Record<never, never>, Record<never, never>>;
     "About": RouteRecordInfo<"About", "/about", Record<never, never>, Record<never, never>>;
     "Home": RouteRecordInfo<"Home", "/home", Record<never, never>, Record<never, never>>;
-    "ManageErrorCode": RouteRecordInfo<"ManageErrorCode", "/manage/error-code", Record<never, never>, Record<never, never>>;
+    "ManageErrorCode": RouteRecordInfo<"ManageErrorCode", "/manage/error/code", Record<never, never>, Record<never, never>>;
     "ManageMenu": RouteRecordInfo<"ManageMenu", "/manage/menu", Record<never, never>, Record<never, never>>;
     "ManageRole": RouteRecordInfo<"ManageRole", "/manage/role", Record<never, never>, Record<never, never>>;
     "ManageUser": RouteRecordInfo<"ManageUser", "/manage/user", Record<never, never>, Record<never, never>>;

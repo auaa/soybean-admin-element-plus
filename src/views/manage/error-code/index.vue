@@ -2,7 +2,7 @@
 import { reactive } from 'vue';
 import { ElButton, ElPopconfirm, ElTag } from 'element-plus';
 import { enableStatusRecord, errorCodeLanguageRecord, errorTypeRecord } from '@/constants/business';
-import { batchDeleteErrorCode, deleteErrorCode, fetchGetErrorCodeList } from '@/service/api';
+import { deleteErrorCode, fetchGetErrorCodeList } from '@/service/api';
 import { defaultTransform, useTableOperate, useUIPaginatedTable } from '@/hooks/common/table';
 import { $t } from '@/locales';
 import ErrorCodeOperateDrawer from './modules/error-code-operate-drawer.vue';
@@ -35,7 +35,6 @@ const { columns, columnChecks, data, loading, getData, getDataByPage, mobilePagi
   },
   columns: () => [
     { type: 'selection', width: 48 },
-    // { type: 'index', label: $t('common.index'), width: 64 },
     { prop: 'errorCode', label: $t('page.manage.errorCode.errorCode'), minWidth: 120 },
     { prop: 'errorMessage', label: $t('page.manage.errorCode.errorContent'), minWidth: 200 },
     {
@@ -70,12 +69,7 @@ const { columns, columnChecks, data, loading, getData, getDataByPage, mobilePagi
           <ElButton link type="primary" size="small" onClick={() => handleEdit(row.id)}>
             {$t('common.edit')}
           </ElButton>
-          <ElPopconfirm
-            title={$t('common.confirmDelete')}
-            onConfirm={() => handleDelete(row.id)}
-            icon="iconify mdi:delete"
-            iconColor="red"
-          >
+          <ElPopconfirm title={$t('common.confirmDelete')} onConfirm={() => handleDelete(row.id)}>
             {{
               reference: () => (
                 <ElButton link type="danger" size="small">
@@ -97,12 +91,12 @@ const { drawerVisible, operateType, editingData, handleAdd, handleEdit, checkedR
 );
 
 async function handleBatchDelete() {
-  await batchDeleteErrorCode(checkedRowKeys.value.map(item => (item as unknown as Api.SystemManage.ErrorCode).id));
+  await deleteErrorCode(checkedRowKeys.value.map(item => (item as unknown as Api.SystemManage.ErrorCode).id));
   onDeleted();
 }
 
 async function handleDelete(id: number) {
-  await deleteErrorCode(id);
+  await deleteErrorCode([id]);
   onDeleted();
 }
 

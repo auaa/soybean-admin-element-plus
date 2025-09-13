@@ -77,20 +77,11 @@ export function addErrorCode(data: ErrorCodeModel) {
   });
 }
 
-/** delete error code */
-export function deleteErrorCode(id: number) {
-  return request<null>({
-    url: '/systemManage/deleteErrorCode',
-    method: 'delete',
-    data: { id }
-  });
-}
-
 /** batch delete error code */
-export function batchDeleteErrorCode(ids: number[]) {
+export function deleteErrorCode(idList: number[]) {
   return request<null>({
-    url: '/systemManage/batchDeleteErrorCode',
-    method: 'delete',
-    data: { ids }
+    url: '/api/error/code/delete',
+    method: 'post',
+    data: { idList }
   });
 }
