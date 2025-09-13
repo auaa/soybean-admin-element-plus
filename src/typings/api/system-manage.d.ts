@@ -159,18 +159,18 @@ declare namespace Api {
       /** error code */
       errorCode: string;
       /** error content */
-      errorContent: string;
+      errorMessage: string;
       /** language */
-      language: ErrorCodeLanguage;
+      lang: ErrorCodeLanguage;
       /** error type */
       errorType: ErrorType;
       /** solution */
-      solution: string;
+      errorCause: string;
     }>;
 
     /** error code search params */
     type ErrorCodeSearchParams = CommonType.RecordNullable<
-      Pick<Api.SystemManage.ErrorCode, 'errorCode' | 'errorContent' | 'language' | 'errorType' | 'status'> & CommonSearchParams
+      Pick<Api.SystemManage.ErrorCode, 'errorCode' | 'errorMessage' | 'lang' | 'errorType' | 'status'> & CommonSearchParams
     >;
 
     /** error code list */

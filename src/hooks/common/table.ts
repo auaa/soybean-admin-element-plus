@@ -133,7 +133,7 @@ export function useUIPaginatedTable<ResponseData, ApiData>(options: UseUIPaginat
     getColumnChecks: cols => getColumnChecks(cols, options.getColumnVisible),
     getColumns,
     onFetched: data => {
-      pagination.total = data.total;
+      pagination.total = data.totalRowCount;
     }
   });
 
@@ -238,21 +238,21 @@ export function defaultTransform<ApiData>(
   const { data, error } = response;
 
   if (!error) {
-    const { records, current, size, total } = data;
+    const { rows, current, size, totalRowCount } = data;
 
     return {
-      data: records,
+      rows,
       pageNum: current,
       pageSize: size,
-      total
+      totalRowCount
     };
   }
 
   return {
-    data: [],
+    rows: [],
     pageNum: 1,
     pageSize: 10,
-    total: 0
+    totalRowCount: 0
   };
 }
 

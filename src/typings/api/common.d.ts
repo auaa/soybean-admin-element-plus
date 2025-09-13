@@ -12,12 +12,12 @@ declare namespace Api {
       /** page size */
       size: number;
       /** total count */
-      total: number;
+      totalRowCount: number;
     }
 
     /** common params of paginating query list data */
     interface PaginatingQueryRecord<T = any> extends PaginatingCommonParams {
-      records: T[];
+      rows: T[];
     }
 
     /** common search params of table */
@@ -30,6 +30,7 @@ declare namespace Api {
      * - "2": disabled
      */
     type EnableStatus = '1' | '2';
+    type ActiveStatus = 'enable' | 'disable';
 
     /** common record */
     type CommonRecord<T = any> = {
@@ -44,7 +45,7 @@ declare namespace Api {
       /** record update time */
       updateTime: string;
       /** record status */
-      status: EnableStatus | undefined;
+      status: ActiveStatus | undefined;
     } & T;
   }
 }

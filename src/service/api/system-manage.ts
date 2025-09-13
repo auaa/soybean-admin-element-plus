@@ -55,32 +55,23 @@ export function fetchGetMenuTree() {
 }
 
 /** get error code list */
-export function fetchGetErrorCodeList(params?: Api.SystemManage.ErrorCodeSearchParams) {
+export function fetchGetErrorCodeList(data?: Api.SystemManage.ErrorCodeSearchParams) {
   return request<Api.SystemManage.ErrorCodeList>({
-    url: '/systemManage/getErrorCodeList',
-    method: 'get',
-    params
-  });
-}
-
-export type ErrorCodeModel = Pick<
-  Api.SystemManage.ErrorCode,
-  'errorCode' | 'errorContent' | 'language' | 'errorType' | 'solution' | 'status'
->;
-
-/** add error code */
-export function addErrorCode(data: ErrorCodeModel) {
-  return request<null>({
-    url: '/systemManage/addErrorCode',
+    url: `/api/error/code/search/${data?.size}/${data?.current}`,
     method: 'post',
     data
   });
 }
 
-/** update error code */
-export function updateErrorCode(data: ErrorCodeModel & { id: number }) {
+export type ErrorCodeModel = Pick<
+  Api.SystemManage.ErrorCode,
+  'errorCode' | 'errorMessage' | 'lang' | 'errorType' | 'errorCause' | 'status'
+>;
+
+/** add error code */
+export function addErrorCode(data: ErrorCodeModel) {
   return request<null>({
-    url: '/systemManage/updateErrorCode',
+    url: '/api/error/code/create',
     method: 'post',
     data
   });

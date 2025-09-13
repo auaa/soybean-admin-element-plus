@@ -44,19 +44,18 @@ export function createServiceConfig(env: Env.ImportMeta) {
  * get backend service base url
  *
  * @param env - the current env
- * @param isProxy - if use proxy
  */
-export function getServiceBaseURL(env: Env.ImportMeta, isProxy: boolean) {
+export function getServiceBaseURL(env: Env.ImportMeta) {
   const { baseURL, other } = createServiceConfig(env);
 
   const otherBaseURL = {} as Record<App.Service.OtherBaseURLKey, string>;
 
   other.forEach(item => {
-    otherBaseURL[item.key] = isProxy ? item.proxyPattern : item.baseURL;
+    otherBaseURL[item.key] = item.baseURL;
   });
 
   return {
-    baseURL: isProxy ? createProxyPattern() : baseURL,
+    baseURL,
     otherBaseURL
   };
 }

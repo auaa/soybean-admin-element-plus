@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
 import { enableStatusOptions, errorCodeLanguageOptions, errorTypeOptions } from '@/constants/business';
-import { type ErrorCodeModel, addErrorCode, updateErrorCode } from '@/service/api';
+import { type ErrorCodeModel, addErrorCode } from '@/service/api';
 import { useForm, useFormRules } from '@/hooks/common/form';
 import { $t } from '@/locales';
 
@@ -37,29 +37,29 @@ const title = computed(() => {
   return titles[props.operateType];
 });
 
-type Model = Pick<Api.SystemManage.ErrorCode, 'errorCode' | 'errorContent' | 'language' | 'errorType' | 'solution' | 'status'>;
+type Model = Pick<Api.SystemManage.ErrorCode, 'errorCode' | 'errorMessage' | 'lang' | 'errorType' | 'errorCause' | 'status'>;
 
 const model = ref(createDefaultModel());
 
 function createDefaultModel(): Model {
   return {
     errorCode: '',
-    errorContent: '',
-    language: 'zh-CN',
+    errorMessage: '',
+    lang: 'zh-CN',
     errorType: '1',
-    solution: '',
-    status: '1'
+    errorCause: '',
+    status: 'enable'
   };
 }
 
-type RuleKey = Extract<keyof Model, 'errorCode' | 'errorContent' | 'language' | 'errorType' | 'solution' | 'status'>;
+type RuleKey = Extract<keyof Model, 'errorCode' | 'errorMessage' | 'lang' | 'errorType' | 'errorCause' | 'status'>;
 
 const rules: Record<RuleKey, App.Global.FormRule> = {
   errorCode: defaultRequiredRule,
-  errorContent: defaultRequiredRule,
-  language: defaultRequiredRule,
+  errorMessage: defaultRequiredRule,
+  lang: defaultRequiredRule,
   errorType: defaultRequiredRule,
-  solution: defaultRequiredRule,
+  errorCause: defaultRequiredRule,
   status: defaultRequiredRule
 };
 
@@ -80,21 +80,16 @@ async function handleSubmit() {
 
   const errorCodeData: ErrorCodeModel = {
     errorCode: model.value.errorCode,
-    errorContent: model.value.errorContent,
-    language: model.value.language,
+    errorMessage: model.value.errorMessage,
+    lang: model.value.lang,
     errorType: model.value.errorType,
-    solution: model.value.solution,
+    errorCause: model.value.errorCause,
     status: model.value.status
   };
 
-  if (props.operateType === 'add') {
-    await addErrorCode(errorCodeData);
-  } else {
-    await updateErrorCode({
-      ...errorCodeData,
-      id: props.rowData!.id
-    });
-  }
+  await addErrorCode({
+    ...errorCodeData
+  });
 
   window.$message?.success($t('common.updateSuccess'));
   closeDrawer();
@@ -117,14 +112,14 @@ watch(visible, () => {
       </ElFormItem>
       <ElFormItem :label="$t('page.manage.errorCode.errorContent')" prop="errorContent">
         <ElInput
-          v-model="model.errorContent"
+          v-model="model.errorMessage"
           type="textarea"
           :rows="3"
           :placeholder="$t('page.manage.errorCode.form.errorContent')"
         />
       </ElFormItem>
       <ElFormItem :label="$t('page.manage.errorCode.language')" prop="language">
-        <ElRadioGroup v-model="model.language">
+        <ElRadioGroup v-model="model.lang">
           <ElRadio v-for="{ label, value } in errorCodeLanguageOptions" :key="value" :value="value" :label="$t(label)" />
         </ElRadioGroup>
       </ElFormItem>
@@ -135,7 +130,7 @@ watch(visible, () => {
       </ElFormItem>
       <ElFormItem :label="$t('page.manage.errorCode.solution')" prop="solution">
         <ElInput
-          v-model="model.solution"
+          v-model="model.errorCause"
           type="textarea"
           :rows="4"
           :placeholder="$t('page.manage.errorCode.form.solution')"

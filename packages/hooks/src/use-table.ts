@@ -4,10 +4,10 @@ import useBoolean from './use-boolean';
 import useLoading from './use-loading';
 
 export interface PaginationData<T> {
-  data: T[];
+  rows: T[];
   pageNum: number;
   pageSize: number;
-  total: number;
+  totalRowCount: number;
 }
 
 type GetApiData<ApiData, Pagination extends boolean> = Pagination extends true ? PaginationData<ApiData> : ApiData[];
@@ -125,7 +125,7 @@ function getTableData<ApiData, Pagination extends boolean>(
   pagination?: Pagination
 ) {
   if (pagination) {
-    return (data as PaginationData<ApiData>).data;
+    return (data as PaginationData<ApiData>).rows;
   }
 
   return data as ApiData[];

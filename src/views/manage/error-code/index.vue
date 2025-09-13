@@ -16,8 +16,8 @@ function getInitSearchParams(): Api.SystemManage.ErrorCodeSearchParams {
     size: 10,
     status: undefined,
     errorCode: undefined,
-    errorContent: undefined,
-    language: undefined,
+    errorMessage: undefined,
+    lang: undefined,
     errorType: undefined
   };
 }
@@ -35,14 +35,14 @@ const { columns, columnChecks, data, loading, getData, getDataByPage, mobilePagi
   },
   columns: () => [
     { type: 'selection', width: 48 },
-    { type: 'index', label: $t('common.index'), width: 64 },
+    // { type: 'index', label: $t('common.index'), width: 64 },
     { prop: 'errorCode', label: $t('page.manage.errorCode.errorCode'), minWidth: 120 },
-    { prop: 'errorContent', label: $t('page.manage.errorCode.errorContent'), minWidth: 200 },
+    { prop: 'errorMessage', label: $t('page.manage.errorCode.errorContent'), minWidth: 200 },
     {
-      prop: 'language',
+      prop: 'lang',
       label: $t('page.manage.errorCode.language'),
       width: 100,
-      formatter: (row: Api.SystemManage.ErrorCode) => $t(errorCodeLanguageRecord[row.language])
+      formatter: (row: Api.SystemManage.ErrorCode) => $t(errorCodeLanguageRecord[row.lang])
     },
     {
       prop: 'errorType',
@@ -50,13 +50,15 @@ const { columns, columnChecks, data, loading, getData, getDataByPage, mobilePagi
       width: 120,
       formatter: (row: Api.SystemManage.ErrorCode) => $t(errorTypeRecord[row.errorType])
     },
-    { prop: 'solution', label: $t('page.manage.errorCode.solution'), minWidth: 200 },
+    { prop: 'errorCause', label: $t('page.manage.errorCode.solution'), minWidth: 200 },
     {
       prop: 'status',
       label: $t('page.manage.errorCode.status'),
       width: 100,
       formatter: (row: Api.SystemManage.ErrorCode) => (
-        <ElTag type={row.status === '1' ? 'success' : 'info'}>{$t(enableStatusRecord[row.status || '1'])}</ElTag>
+        <ElTag type={row.status === 'enable' ? 'success' : 'info'}>
+          {$t(enableStatusRecord[row.status || 'enable'])}
+        </ElTag>
       )
     },
     {

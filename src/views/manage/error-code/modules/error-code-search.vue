@@ -39,12 +39,12 @@ function search() {
             </ElCol>
             <ElCol :lg="6" :md="8" :sm="12">
               <ElFormItem :label="$t('page.manage.errorCode.errorContent')" prop="errorContent">
-                <ElInput v-model="model.errorContent" :placeholder="$t('page.manage.errorCode.form.errorContent')" />
+                <ElInput v-model="model.errorMessage" :placeholder="$t('page.manage.errorCode.form.errorContent')" />
               </ElFormItem>
             </ElCol>
             <ElCol :lg="6" :md="8" :sm="12">
               <ElFormItem :label="$t('page.manage.errorCode.language')" prop="language">
-                <ElSelect v-model="model.language" :placeholder="$t('page.manage.errorCode.form.language')" clearable>
+                <ElSelect v-model="model.lang" :placeholder="$t('page.manage.errorCode.form.language')" clearable>
                   <ElOption
                     v-for="{ label, value } in translateOptions(errorCodeLanguageOptions)"
                     :key="value"

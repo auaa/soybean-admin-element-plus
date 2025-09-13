@@ -6,8 +6,11 @@ declare namespace Api {
    */
   namespace Auth {
     interface LoginToken {
-      token: string;
+      isLogin: boolean;
+      tokenValue: string;
+      tokenName: string;
       refreshToken: string;
+      loginId: number;
     }
 
     interface UserInfo {
