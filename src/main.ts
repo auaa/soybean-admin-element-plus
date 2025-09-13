@@ -1,13 +1,6 @@
 import { createApp } from 'vue';
 import './plugins/assets';
-import {
-  setupAppVersionNotification,
-  setupDayjs,
-  setupIconifyOffline,
-  setupLoading,
-  setupNProgress,
-  setupUI
-} from './plugins';
+import { setupDayjs, setupIconifyOffline, setupLoading, setupNProgress, setupUI } from './plugins';
 import { setupStore } from './store';
 import { setupRouter } from './router';
 import { setupI18n } from './locales';
@@ -31,8 +24,6 @@ async function setupApp() {
   await setupRouter(app);
 
   setupI18n(app);
-
-  setupAppVersionNotification();
 
   app.mount('#app');
 }

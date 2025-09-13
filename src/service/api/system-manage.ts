@@ -53,3 +53,53 @@ export function fetchGetMenuTree() {
     method: 'get'
   });
 }
+
+/** get error code list */
+export function fetchGetErrorCodeList(params?: Api.SystemManage.ErrorCodeSearchParams) {
+  return request<Api.SystemManage.ErrorCodeList>({
+    url: '/systemManage/getErrorCodeList',
+    method: 'get',
+    params
+  });
+}
+
+export type ErrorCodeModel = Pick<
+  Api.SystemManage.ErrorCode,
+  'errorCode' | 'errorContent' | 'language' | 'errorType' | 'solution' | 'status'
+>;
+
+/** add error code */
+export function addErrorCode(data: ErrorCodeModel) {
+  return request<null>({
+    url: '/systemManage/addErrorCode',
+    method: 'post',
+    data
+  });
+}
+
+/** update error code */
+export function updateErrorCode(data: ErrorCodeModel & { id: number }) {
+  return request<null>({
+    url: '/systemManage/updateErrorCode',
+    method: 'post',
+    data
+  });
+}
+
+/** delete error code */
+export function deleteErrorCode(id: number) {
+  return request<null>({
+    url: '/systemManage/deleteErrorCode',
+    method: 'delete',
+    data: { id }
+  });
+}
+
+/** batch delete error code */
+export function batchDeleteErrorCode(ids: number[]) {
+  return request<null>({
+    url: '/systemManage/batchDeleteErrorCode',
+    method: 'delete',
+    data: { ids }
+  });
+}

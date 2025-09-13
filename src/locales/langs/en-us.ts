@@ -179,23 +179,13 @@ const local: App.I18n.Schema = {
     document_alova: 'Alova Document',
     'user-center': 'User Center',
     about: 'About',
-    function: 'System Function',
-    alova: 'Alova Example',
-    alova_request: 'Alova Request',
-    alova_user: 'User List',
-    alova_scenes: 'Scenario Request',
-    function_tab: 'Tab',
-    'function_multi-tab': 'Multi Tab',
-    'function_hide-child': 'Hide Child',
-    'function_hide-child_one': 'Hide Child',
-    'function_hide-child_two': 'Two',
-    'function_hide-child_three': 'Three',
-    function_request: 'Request',
-    'function_toggle-auth': 'Toggle Auth',
-    'function_super-page': 'Super Admin Visible',
+
+
+
     manage: 'System Manage',
     manage_user: 'User Manage',
     'manage_user-detail': 'User Detail',
+    'manage_error-code': 'Error Code Manage',
     manage_role: 'Role Manage',
     manage_menu: 'Menu Manage',
     'multi-menu': 'Multi Menu',
@@ -207,31 +197,7 @@ const local: App.I18n.Schema = {
     exception: 'Exception',
     exception_403: '403',
     exception_404: '404',
-    exception_500: '500',
-    plugin: 'Plugin',
-    plugin_copy: 'Copy',
-    plugin_charts: 'Charts',
-    plugin_charts_echarts: 'ECharts',
-    plugin_charts_antv: 'AntV',
-    plugin_charts_vchart: 'VChart',
-    plugin_editor: 'Editor',
-    plugin_editor_quill: 'Quill',
-    plugin_editor_markdown: 'Markdown',
-    plugin_icon: 'Icon',
-    plugin_map: 'Map',
-    plugin_print: 'Print',
-    plugin_swiper: 'Swiper',
-    plugin_video: 'Video',
-    plugin_barcode: 'Barcode',
-    plugin_pinyin: 'pinyin',
-    plugin_excel: 'Excel',
-    plugin_pdf: 'PDF preview',
-    plugin_gantt: 'Gantt Chart',
-    plugin_gantt_dhtmlx: 'dhtmlxGantt',
-    plugin_gantt_vtable: 'VTableGantt',
-    plugin_typeit: 'Typeit',
-    plugin_tables: 'Tables',
-    plugin_tables_vtable: 'VTable'
+    exception_500: '500'
   },
   page: {
     login: {
@@ -322,59 +288,8 @@ const local: App.I18n.Schema = {
       },
       creativity: 'Creativity'
     },
-    function: {
-      tab: {
-        tabOperate: {
-          title: 'Tab Operation',
-          addTab: 'Add Tab',
-          addTabDesc: 'To about page',
-          closeTab: 'Close Tab',
-          closeCurrentTab: 'Close Current Tab',
-          closeAboutTab: 'Close "About" Tab',
-          addMultiTab: 'Add Multi Tab',
-          addMultiTabDesc1: 'To MultiTab page',
-          addMultiTabDesc2: 'To MultiTab page(with query params)'
-        },
-        tabTitle: {
-          title: 'Tab Title',
-          changeTitle: 'Change Title',
-          change: 'Change',
-          resetTitle: 'Reset Title',
-          reset: 'Reset'
-        }
-      },
-      multiTab: {
-        routeParam: 'Route Param',
-        backTab: 'Back function_tab'
-      },
-      toggleAuth: {
-        toggleAccount: 'Toggle Account',
-        authHook: 'Auth Hook Function `hasAuth`',
-        superAdminVisible: 'Super Admin Visible',
-        adminVisible: 'Admin Visible',
-        adminOrUserVisible: 'Admin and User Visible'
-      },
-      request: {
-        repeatedErrorOccurOnce: 'Repeated Request Error Occurs Once',
-        repeatedError: 'Repeated Request Error',
-        repeatedErrorMsg1: 'Custom Request Error 1',
-        repeatedErrorMsg2: 'Custom Request Error 2'
-      }
-    },
-    alova: {
-      scenes: {
-        captchaSend: 'Captcha Send',
-        autoRequest: 'Auto Request',
-        visibilityRequestTips: 'Automatically request when switching browser window',
-        pollingRequestTips: 'It will request every 3 seconds',
-        networkRequestTips: 'Automatically request after network reconnecting',
-        refreshTime: 'Refresh Time',
-        startRequest: 'Start Request',
-        stopRequest: 'Stop Request',
-        requestCrossComponent: 'Request Cross Component',
-        triggerAllRequest: 'Manually Trigger All Automated Requests'
-      }
-    },
+
+
     manage: {
       common: {
         status: {
@@ -490,6 +405,35 @@ const local: App.I18n.Schema = {
         iconType: {
           iconify: 'Iconify Icon',
           local: 'Local Icon'
+        }
+      },
+      errorCode: {
+        title: 'Error Code List',
+        errorCode: 'Error Code',
+        errorContent: 'Error Content',
+        language: 'Language',
+        errorType: 'Error Type',
+        solution: 'Solution',
+        status: 'Status',
+        form: {
+          errorCode: 'Please enter error code',
+          errorContent: 'Please enter error content',
+          language: 'Please select language',
+          errorType: 'Please select error type',
+          solution: 'Please enter solution',
+          status: 'Please select status'
+        },
+        addErrorCode: 'Add Error Code',
+        editErrorCode: 'Edit Error Code',
+        languages: {
+          zhCN: 'Chinese',
+          enUS: 'English'
+        },
+        errorTypes: {
+          system: 'System Error',
+          business: 'Business Error',
+          validation: 'Validation Error',
+          network: 'Network Error'
         }
       }
     }

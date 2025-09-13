@@ -179,23 +179,13 @@ const local: App.I18n.Schema = {
     document_alova: 'Alova文档',
     'user-center': '个人中心',
     about: '关于',
-    function: '系统功能',
-    alova: 'alova示例',
-    alova_request: 'alova请求',
-    alova_user: '用户列表',
-    alova_scenes: '场景化请求',
-    function_tab: '标签页',
-    'function_multi-tab': '多标签页',
-    'function_hide-child': '隐藏子菜单',
-    'function_hide-child_one': '隐藏子菜单',
-    'function_hide-child_two': '菜单二',
-    'function_hide-child_three': '菜单三',
-    function_request: '请求',
-    'function_toggle-auth': '切换权限',
-    'function_super-page': '超级管理员可见',
+
+
+
     manage: '系统管理',
     manage_user: '用户管理',
     'manage_user-detail': '用户详情',
+    'manage_error-code': '错误码管理',
     manage_role: '角色管理',
     manage_menu: '菜单管理',
     'multi-menu': '多级菜单',
@@ -207,31 +197,7 @@ const local: App.I18n.Schema = {
     exception: '异常页',
     exception_403: '403',
     exception_404: '404',
-    exception_500: '500',
-    plugin: '插件示例',
-    plugin_copy: '剪贴板',
-    plugin_charts: '图表',
-    plugin_charts_echarts: 'ECharts',
-    plugin_charts_antv: 'AntV',
-    plugin_charts_vchart: 'VChart',
-    plugin_editor: '编辑器',
-    plugin_editor_quill: '富文本编辑器',
-    plugin_editor_markdown: 'MD 编辑器',
-    plugin_icon: '图标',
-    plugin_map: '地图',
-    plugin_print: '打印',
-    plugin_swiper: 'Swiper',
-    plugin_video: '视频',
-    plugin_barcode: '条形码',
-    plugin_pinyin: '拼音',
-    plugin_excel: 'Excel',
-    plugin_pdf: 'PDF 预览',
-    plugin_gantt: '甘特图',
-    plugin_gantt_dhtmlx: 'dhtmlxGantt',
-    plugin_gantt_vtable: 'VTableGantt',
-    plugin_typeit: '打字机',
-    plugin_tables: '表格',
-    plugin_tables_vtable: 'VTable'
+    exception_500: '500'
   },
   page: {
     login: {
@@ -322,59 +288,8 @@ const local: App.I18n.Schema = {
       },
       creativity: '创意'
     },
-    function: {
-      tab: {
-        tabOperate: {
-          title: '标签页操作',
-          addTab: '添加标签页',
-          addTabDesc: '跳转到关于页面',
-          closeTab: '关闭标签页',
-          closeCurrentTab: '关闭当前标签页',
-          closeAboutTab: '关闭"关于"标签页',
-          addMultiTab: '添加多标签页',
-          addMultiTabDesc1: '跳转到多标签页页面',
-          addMultiTabDesc2: '跳转到多标签页页面(带有查询参数)'
-        },
-        tabTitle: {
-          title: '标签页标题',
-          changeTitle: '修改标题',
-          change: '修改',
-          resetTitle: '重置标题',
-          reset: '重置'
-        }
-      },
-      multiTab: {
-        routeParam: '路由参数',
-        backTab: '返回 function_tab'
-      },
-      toggleAuth: {
-        toggleAccount: '切换账号',
-        authHook: '权限钩子函数 `hasAuth`',
-        superAdminVisible: '超级管理员可见',
-        adminVisible: '管理员可见',
-        adminOrUserVisible: '管理员和用户可见'
-      },
-      request: {
-        repeatedErrorOccurOnce: '重复请求错误只出现一次',
-        repeatedError: '重复请求错误',
-        repeatedErrorMsg1: '自定义请求错误 1',
-        repeatedErrorMsg2: '自定义请求错误 2'
-      }
-    },
-    alova: {
-      scenes: {
-        captchaSend: '发送验证码',
-        autoRequest: '自动请求',
-        visibilityRequestTips: '浏览器窗口切换自动请求数据',
-        pollingRequestTips: '每3秒自动请求一次',
-        networkRequestTips: '网络重连后自动请求',
-        refreshTime: '更新时间',
-        startRequest: '开始请求',
-        stopRequest: '停止请求',
-        requestCrossComponent: '跨组件触发请求',
-        triggerAllRequest: '手动触发所有自动请求'
-      }
-    },
+
+
     manage: {
       common: {
         status: {
@@ -490,6 +405,35 @@ const local: App.I18n.Schema = {
         iconType: {
           iconify: 'iconify图标',
           local: '本地图标'
+        }
+      },
+      errorCode: {
+        title: '错误码列表',
+        errorCode: '错误码编码',
+        errorContent: '错误码内容',
+        language: '语言',
+        errorType: '错误类型',
+        solution: '解决措施',
+        status: '状态',
+        form: {
+          errorCode: '请输入错误码编码',
+          errorContent: '请输入错误码内容',
+          language: '请选择语言',
+          errorType: '请选择错误类型',
+          solution: '请输入解决措施',
+          status: '请选择状态'
+        },
+        addErrorCode: '新增错误码',
+        editErrorCode: '编辑错误码',
+        languages: {
+          zhCN: '中文',
+          enUS: '英文'
+        },
+        errorTypes: {
+          system: '系统错误',
+          business: '业务错误',
+          validation: '验证错误',
+          network: '网络错误'
         }
       }
     }

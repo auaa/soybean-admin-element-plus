@@ -135,5 +135,45 @@ declare namespace Api {
       pId: number;
       children?: MenuTree[];
     };
+
+    /**
+     * error code language
+     *
+     * - "zh-CN": "Chinese"
+     * - "en-US": "English"
+     */
+    type ErrorCodeLanguage = 'zh-CN' | 'en-US';
+
+    /**
+     * error type
+     *
+     * - "1": "System Error"
+     * - "2": "Business Error"
+     * - "3": "Validation Error"
+     * - "4": "Network Error"
+     */
+    type ErrorType = '1' | '2' | '3' | '4';
+
+    /** error code */
+    type ErrorCode = Common.CommonRecord<{
+      /** error code */
+      errorCode: string;
+      /** error content */
+      errorContent: string;
+      /** language */
+      language: ErrorCodeLanguage;
+      /** error type */
+      errorType: ErrorType;
+      /** solution */
+      solution: string;
+    }>;
+
+    /** error code search params */
+    type ErrorCodeSearchParams = CommonType.RecordNullable<
+      Pick<Api.SystemManage.ErrorCode, 'errorCode' | 'errorContent' | 'language' | 'errorType' | 'status'> & CommonSearchParams
+    >;
+
+    /** error code list */
+    type ErrorCodeList = Common.PaginatingQueryRecord<ErrorCode>;
   }
 }

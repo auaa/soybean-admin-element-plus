@@ -1,6 +1,6 @@
 <script setup lang="tsx">
 import { reactive } from 'vue';
-import { ElButton, ElPopconfirm, ElTag } from 'element-plus';
+import { ElButton, ElCollapseTransition, ElPopconfirm, ElTag } from 'element-plus';
 import { enableStatusRecord, userGenderRecord } from '@/constants/business';
 import { fetchGetUserList } from '@/service/api';
 import { defaultTransform, useTableOperate, useUIPaginatedTable } from '@/hooks/common/table';
@@ -146,7 +146,9 @@ function edit(id: number) {
 
 <template>
   <div class="min-h-500px flex-col-stretch gap-16px overflow-hidden lt-sm:overflow-auto">
-    <UserSearch v-model:model="searchParams" @reset="resetSearchParams" @search="getDataByPage" />
+    <ElCollapseTransition>
+      <UserSearch v-model:model="searchParams" @reset="resetSearchParams" @search="getDataByPage"/>
+    </ElCollapseTransition>
     <ElCard class="card-wrapper sm:flex-1-hidden" body-class="ht50">
       <template #header>
         <div class="flex items-center justify-between">

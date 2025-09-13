@@ -27,3 +27,19 @@ export const menuIconTypeRecord: Record<Api.SystemManage.IconType, App.I18n.I18n
 };
 
 export const menuIconTypeOptions = transformRecordToOption(menuIconTypeRecord);
+
+export const errorCodeLanguageRecord: Record<Api.SystemManage.ErrorCodeLanguage, App.I18n.I18nKey> = {
+  'zh-CN': 'page.manage.errorCode.languages.zhCN',
+  'en-US': 'page.manage.errorCode.languages.enUS'
+};
+
+export const errorCodeLanguageOptions = transformRecordToOption(errorCodeLanguageRecord);
+
+export const errorTypeRecord: Record<Api.SystemManage.ErrorType, App.I18n.I18nKey> = {
+  '1': 'page.manage.errorCode.errorTypes.system',
+  '2': 'page.manage.errorCode.errorTypes.business',
+  '3': 'page.manage.errorCode.errorTypes.validation',
+  '4': 'page.manage.errorCode.errorTypes.network'
+};
+
+export const errorTypeOptions = transformRecordToOption(errorTypeRecord);
