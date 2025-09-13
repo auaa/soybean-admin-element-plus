@@ -180,8 +180,6 @@ const local: App.I18n.Schema = {
     'user-center': 'User Center',
     about: 'About',
 
-
-
     manage: 'System Manage',
     manage_user: 'User Manage',
     'manage_user-detail': 'User Detail',
@@ -289,12 +287,13 @@ const local: App.I18n.Schema = {
       creativity: 'Creativity'
     },
 
-
     manage: {
       common: {
         status: {
           enable: 'Enable',
-          disable: 'Disable'
+          disable: 'Disable',
+          enableSuccess: 'Enable Success',
+          disableSuccess: 'Disable Success'
         }
       },
       role: {

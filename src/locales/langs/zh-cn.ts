@@ -180,8 +180,6 @@ const local: App.I18n.Schema = {
     'user-center': '个人中心',
     about: '关于',
 
-
-
     manage: '系统管理',
     manage_user: '用户管理',
     'manage_user-detail': '用户详情',
@@ -289,12 +287,13 @@ const local: App.I18n.Schema = {
       creativity: '创意'
     },
 
-
     manage: {
       common: {
         status: {
           enable: '启用',
-          disable: '禁用'
+          disable: '禁用',
+          enableSuccess: '启用成功',
+          disableSuccess: '禁用成功'
         }
       },
       role: {

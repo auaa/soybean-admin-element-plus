@@ -2,7 +2,7 @@
 import { reactive } from 'vue';
 import { ElButton, ElPopconfirm, ElTag } from 'element-plus';
 import { enableStatusRecord, errorCodeLanguageRecord, errorTypeRecord } from '@/constants/business';
-import { deleteErrorCode, fetchGetErrorCodeList } from '@/service/api';
+import { deleteErrorCode, disableErrorCode, enableErrorCode, fetchGetErrorCodeList } from '@/service/api';
 import { defaultTransform, useTableOperate, useUIPaginatedTable } from '@/hooks/common/table';
 import { $t } from '@/locales';
 import ErrorCodeOperateDrawer from './modules/error-code-operate-drawer.vue';
@@ -63,12 +63,21 @@ const { columns, columnChecks, data, loading, getData, getDataByPage, mobilePagi
     {
       prop: 'operate',
       label: $t('common.operate'),
-      width: 130,
+      width: 200,
       formatter: (row: Api.SystemManage.ErrorCode) => (
         <div class="flex-center gap-8px">
           <ElButton link type="primary" size="small" onClick={() => handleEdit(row.id)}>
             {$t('common.edit')}
           </ElButton>
+          {row.status === 'enable' ? (
+            <ElButton link type="warning" size="small" onClick={() => handleDisable(row.id)}>
+              {$t('page.manage.common.status.disable')}
+            </ElButton>
+          ) : (
+            <ElButton link type="success" size="small" onClick={() => handleEnable(row.id)}>
+              {$t('page.manage.common.status.enable')}
+            </ElButton>
+          )}
           <ElPopconfirm title={$t('common.confirmDelete')} onConfirm={() => handleDelete(row.id)}>
             {{
               reference: () => (
@@ -98,6 +107,18 @@ async function handleBatchDelete() {
 async function handleDelete(id: number) {
   await deleteErrorCode([id]);
   onDeleted();
+}
+
+async function handleEnable(id: number) {
+  await enableErrorCode(id);
+  window.$message?.success($t('page.manage.common.status.enableSuccess'));
+  getData();
+}
+
+async function handleDisable(id: number) {
+  await disableErrorCode(id);
+  window.$message?.success($t('page.manage.common.status.disableSuccess'));
+  getData();
 }
 
 function resetSearchParams() {

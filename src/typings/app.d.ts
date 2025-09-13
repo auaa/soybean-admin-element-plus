@@ -507,12 +507,13 @@ declare namespace App {
           creativity: string;
         };
 
-
         manage: {
           common: {
             status: {
               enable: string;
               disable: string;
+              enableSuccess: string;
+              disableSuccess: string;
             };
           };
           role: {

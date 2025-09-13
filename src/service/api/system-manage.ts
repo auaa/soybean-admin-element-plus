@@ -85,3 +85,19 @@ export function deleteErrorCode(idList: number[]) {
     data: { idList }
   });
 }
+
+/** enable error code */
+export function enableErrorCode(id: number) {
+  return request<null>({
+    url: `/api/error/code/enable/${id}`,
+    method: 'post'
+  });
+}
+
+/** disable error code */
+export function disableErrorCode(id: number) {
+  return request<null>({
+    url: `/api/error/code/disable/${id}`,
+    method: 'post'
+  });
+}
