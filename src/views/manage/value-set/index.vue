@@ -10,8 +10,8 @@ import {
   ElInputNumber,
   ElMessage,
   ElMessageBox,
-  ElOption,
-  ElSelect,
+  ElRadio,
+  ElRadioGroup,
   ElTree
 } from 'element-plus';
 import { Delete } from '@element-plus/icons-vue';
@@ -35,7 +35,7 @@ const treeRef = ref();
 
 // Form data and mode
 const formRef = ref();
-const formData: Ref<Api.SystemManage.ValueSet | null> = ref(null);
+const formData: Ref<Partial<Api.SystemManage.ValueSet> | null> = ref(null);
 const isEditMode = ref(false);
 const isAddMode = ref(false);
 
@@ -97,27 +97,25 @@ function updateNodeInTree(
   return false;
 }
 
-// Load tree data (root nodes only)
-async function loadTreeData() {
-  loadChildNodes({ data: {} }, rootNodes => {
-    treeData.value = rootNodes;
-  });
-}
-
 // Lazy load child nodes
 async function loadChildNodes(node: any, resolve: any) {
   startLoading();
   try {
-    const { data } = await fetchGetValueSetTree(node.data.id);
+    const pid = node?.data.id;
+    const { data } = await fetchGetValueSetTree(pid);
     const childNodes = data || [];
-    if (node.data.id) {
-      const currentNode = findNodeById(treeData.value, node.data.id);
-      currentNode.children = childNodes;
+    if (pid) {
+      const currentNode = findNodeById(treeData.value, pid);
+      if (currentNode) {
+        currentNode.children = childNodes;
+      }
     } else {
       treeData.value = childNodes;
     }
     // Backend returns leafFlag for each child node to determine expandability
-    resolve(childNodes);
+    if (resolve) {
+      resolve(childNodes);
+    }
   } catch {
     ElMessage.error($t('page.manage.valueSet.loadChildrenError'));
     resolve([]);
@@ -204,13 +202,13 @@ async function handleSave() {
     startLoading();
 
     const saveData = {
-      vsCode: formData.value.vsCode,
-      vsName: formData.value.vsName,
-      vsValue: formData.value.vsValue,
-      sort: formData.value.sort,
-      parentPath: formData.value.parentPath,
+      vsCode: formData.value.vsCode || '',
+      vsName: formData.value.vsName || '',
+      vsValue: formData.value.vsValue || '',
+      sort: formData.value.sort || 0,
+      parentPath: formData.value.parentPath || '',
       status: formData.value.status!,
-      description: formData.value.description
+      description: formData.value.description || ''
     };
 
     if (isAddMode.value) {
@@ -244,7 +242,7 @@ async function handleSave() {
         }
       } else {
         // If adding root node, reload entire tree
-        await loadTreeData();
+        await treeRef.value.load();
       }
     } else if (isEditMode.value && selectedNodeId.value) {
       // Update existing value set using update API
@@ -300,7 +298,7 @@ async function handleDelete(node: Api.SystemManage.ValueSetTree) {
     }
 
     // Reload tree data to reflect changes
-    await loadTreeData();
+    await treeRef.value.load();
   } catch (error) {
     if (error !== 'cancel') {
       ElMessage.error($t('common.error'));
@@ -435,9 +433,9 @@ initializeDefaultForm();
             </ElFormItem>
 
             <ElFormItem :label="$t('page.manage.valueSet.status')" prop="status">
-              <ElSelect v-model="formData.status" :placeholder="$t('page.manage.valueSet.statusPlaceholder')">
-                <ElOption v-for="(label, value) in enableStatusRecord" :key="value" :label="$t(label)" :value="value" />
-              </ElSelect>
+              <ElRadioGroup v-model="formData.status">
+                <ElRadio v-for="(label, value) in enableStatusRecord" :key="value" :value="value" :label="$t(label)" />
+              </ElRadioGroup>
             </ElFormItem>
 
             <ElFormItem :label="$t('page.manage.valueSet.description')">
