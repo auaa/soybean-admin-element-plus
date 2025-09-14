@@ -176,6 +176,7 @@ const local: App.I18n.Schema = {
     'manage_error-code': '错误码管理',
     manage_role: '角色管理',
     manage_menu: '菜单管理',
+    manage_i18n: '国际化管理',
     'manage_value-set': '值集管理',
     exception: '异常页',
     exception_403: '403',
@@ -450,6 +451,37 @@ const local: App.I18n.Schema = {
         loadChildrenError: '加载子节点失败',
         addRoot: '新增根节点',
         addChild: '新增节点'
+      },
+      i18n: {
+        title: '国际化管理',
+        searchTitle: '搜索国际化',
+        i18nCode: '编码',
+        language: '语言',
+        content: '内容',
+        status: '状态',
+        description: '描述',
+        i18nCodePlaceholder: '请输入国际化编码',
+        contentPlaceholder: '请输入内容',
+        descriptionPlaceholder: '请输入描述',
+        i18nCodeRequired: '国际化编码不能为空',
+        languageRequired: '语言不能为空',
+        contentRequired: '内容不能为空',
+        statusRequired: '状态不能为空',
+        addI18n: '新增国际化',
+        editI18n: '编辑国际化',
+        addError: '新增国际化失败',
+        updateError: '更新国际化失败',
+        form: {
+          i18nCode: '请输入国际化编码',
+          language: '请选择语言',
+          content: '请输入内容',
+          status: '请选择状态',
+          description: '请输入描述'
+        },
+        languages: {
+          zhCN: '中文',
+          enUS: '英文'
+        }
       }
     }
   },

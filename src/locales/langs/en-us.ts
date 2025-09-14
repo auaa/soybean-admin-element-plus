@@ -176,6 +176,7 @@ const local: App.I18n.Schema = {
     'manage_error-code': 'Error Code Manage',
     manage_role: 'Role Manage',
     manage_menu: 'Menu Manage',
+    manage_i18n: 'I18n Manage',
     'manage_value-set': 'Value Set Manage',
     exception: 'Exception',
     exception_403: '403',
@@ -450,6 +451,37 @@ const local: App.I18n.Schema = {
         loadChildrenError: 'Failed to load child nodes',
         addRoot: 'Add Root',
         addChild: 'Add Child'
+      },
+      i18n: {
+        title: 'I18n Management',
+        searchTitle: 'Search I18n',
+        i18nCode: 'I18n Code',
+        language: 'Language',
+        content: 'Content',
+        status: 'Status',
+        description: 'Description',
+        i18nCodePlaceholder: 'Please enter i18n code',
+        contentPlaceholder: 'Please enter content',
+        descriptionPlaceholder: 'Please enter description',
+        i18nCodeRequired: 'I18n code is required',
+        languageRequired: 'Language is required',
+        contentRequired: 'Content is required',
+        statusRequired: 'Status is required',
+        addI18n: 'Add I18n',
+        editI18n: 'Edit I18n',
+        addError: 'Failed to add i18n',
+        updateError: 'Failed to update i18n',
+        form: {
+          i18nCode: 'Please enter i18n code',
+          language: 'Please select language',
+          content: 'Please enter content',
+          status: 'Please select status',
+          description: 'Please enter description'
+        },
+        languages: {
+          zhCN: 'Chinese',
+          enUS: 'English'
+        }
       }
     }
   },

@@ -108,6 +108,15 @@ export const generatedRoutes: GeneratedRoute[] = [
         }
       },
       {
+        name: 'manage_i18n',
+        path: '/manage/i18n',
+        component: 'view.manage_i18n',
+        meta: {
+          title: 'manage_i18n',
+          i18nKey: 'route.manage_i18n'
+        }
+      },
+      {
         name: 'manage_menu',
         path: '/manage/menu',
         component: 'view.manage_menu',

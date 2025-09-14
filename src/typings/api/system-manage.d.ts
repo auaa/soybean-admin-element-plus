@@ -207,5 +207,33 @@ declare namespace Api {
       leafFlag: boolean;
       children?: ValueSetTree[];
     };
+
+    /**
+     * i18n language
+     *
+     * - "zh-CN": "Chinese"
+     * - "en-US": "English"
+     */
+    type I18nLanguage = 'zh-CN' | 'en-US';
+
+    /** i18n */
+    type I18n = Common.CommonRecord<{
+      /** i18n code */
+      i18nCode: string;
+      /** language */
+      lang: I18nLanguage;
+      /** i18n content */
+      i18nContent: string;
+      /** description */
+      description?: string;
+    }>;
+
+    /** i18n search params */
+    type I18nSearchParams = CommonType.RecordNullable<
+      Pick<Api.SystemManage.I18n, 'i18nCode' | 'lang' | 'i18nContent' | 'status'> & CommonSearchParams
+    >;
+
+    /** i18n list */
+    type I18nList = Common.PaginatingQueryRecord<I18n>;
   }
 }

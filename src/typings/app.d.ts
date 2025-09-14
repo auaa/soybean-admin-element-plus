@@ -686,6 +686,37 @@ declare namespace App {
             addRoot: string;
             addChild: string;
           };
+          i18n: {
+            title: string;
+            searchTitle: string;
+            i18nCode: string;
+            language: string;
+            content: string;
+            status: string;
+            description: string;
+            i18nCodePlaceholder: string;
+            contentPlaceholder: string;
+            descriptionPlaceholder: string;
+            i18nCodeRequired: string;
+            languageRequired: string;
+            contentRequired: string;
+            statusRequired: string;
+            addI18n: string;
+            editI18n: string;
+            addError: string;
+            updateError: string;
+            form: {
+              i18nCode: string;
+              language: string;
+              content: string;
+              status: string;
+              description: string;
+            };
+            languages: {
+              zhCN: string;
+              enUS: string;
+            };
+          };
         };
       };
       form: {

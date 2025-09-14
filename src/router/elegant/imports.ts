@@ -23,6 +23,7 @@ export const views: Record<LastLevelRouteKey, RouteComponent | (() => Promise<Ro
   about: () => import("@/views/about/index.vue"),
   home: () => import("@/views/home/index.vue"),
   "manage_error-code": () => import("@/views/manage/error-code/index.vue"),
+  manage_i18n: () => import("@/views/manage/i18n/index.vue"),
   manage_menu: () => import("@/views/manage/menu/index.vue"),
   manage_role: () => import("@/views/manage/role/index.vue"),
   "manage_user-detail": () => import("@/views/manage/user-detail/[id].vue"),

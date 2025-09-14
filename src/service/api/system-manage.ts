@@ -153,3 +153,48 @@ export function deleteSingleValueSet(id: number) {
     params: { id }
   });
 }
+
+/** get i18n list */
+export function fetchGetI18nList(data?: Api.SystemManage.I18nSearchParams) {
+  return request<Api.SystemManage.I18nList>({
+    url: `/api/i18n/search/${data?.size}/${data?.current}`,
+    method: 'post',
+    data
+  });
+}
+
+export type I18nModel = Pick<Api.SystemManage.I18n, 'i18nCode' | 'lang' | 'i18nContent' | 'status' | 'description'>;
+
+/** add or update i18n - unified API */
+export function saveI18n(data: I18nModel & { id?: number }) {
+  return request<null>({
+    url: '/api/i18n/create',
+    method: 'post',
+    data
+  });
+}
+
+/** delete i18n */
+export function deleteI18n(idList: number[]) {
+  return request<null>({
+    url: `/api/i18n/delete`,
+    method: 'post',
+    data: { idList }
+  });
+}
+
+/** enable i18n */
+export function enableI18n(id: number) {
+  return request<null>({
+    url: `/api/i18n/enable/${id}`,
+    method: 'post'
+  });
+}
+
+/** disable i18n */
+export function disableI18n(id: number) {
+  return request<null>({
+    url: `/api/i18n/disable/${id}`,
+    method: 'post'
+  });
+}

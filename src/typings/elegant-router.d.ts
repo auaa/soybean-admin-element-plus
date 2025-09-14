@@ -30,11 +30,12 @@ declare module "@elegant-router/types" {
     "login": "/login/:module(pwd-login|code-login|register|reset-pwd|bind-wechat)?";
     "manage": "/manage";
     "manage_error-code": "/manage/error-code";
+    "manage_i18n": "/manage/i18n";
     "manage_menu": "/manage/menu";
     "manage_role": "/manage/role";
     "manage_user": "/manage/user";
     "manage_user-detail": "/manage/user-detail/:id";
-    "manage_value-set": "/manage/value-set";
+    "manage_value-set": "/manage/value/set";
     "user-center": "/user-center";
   };
 
@@ -105,6 +106,7 @@ declare module "@elegant-router/types" {
     | "about"
     | "home"
     | "manage_error-code"
+    | "manage_i18n"
     | "manage_menu"
     | "manage_role"
     | "manage_user-detail"
@@ -185,7 +187,7 @@ declare module "@elegant-router/types" {
         component: `view.${K}`;
       }
     : never;
-  
+
   /**
    * the center level route
    */
@@ -208,7 +210,7 @@ declare module "@elegant-router/types" {
         children: (CenterLevelRoute<GetChildRouteKey<K>> | LastLevelRoute<GetChildRouteKey<K>>)[];
       }
     : never;
-  
+
   /**
    * the custom first level route
    */

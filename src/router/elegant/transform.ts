@@ -176,11 +176,12 @@ const routeMap: RouteMap = {
   "login": "/login/:module(pwd-login|code-login|register|reset-pwd|bind-wechat)?",
   "manage": "/manage",
   "manage_error-code": "/manage/error-code",
+  "manage_i18n": "/manage/i18n",
   "manage_menu": "/manage/menu",
   "manage_role": "/manage/role",
   "manage_user": "/manage/user",
   "manage_user-detail": "/manage/user-detail/:id",
-  "manage_value-set": "/manage/value-set",
+  "manage_value-set": "/manage/value/set",
   "user-center": "/user-center"
 };
 
