@@ -170,7 +170,7 @@ const local: App.I18n.Schema = {
     'user-center': 'User Center',
     about: 'About',
 
-    manage: 'System Manage',
+    manage: 'General Configuration',
     manage_user: 'User Manage',
     'manage_user-detail': 'User Detail',
     'manage_error-code': 'Error Code Manage',

@@ -70,14 +70,17 @@ const { columns, data, loading, getData, getDataByPage, mobilePagination } = use
       formatter: (row: Api.SystemManage.I18n) => (
         <div class="flex-center gap-8px">
           <ElButton link type="primary" size="small" onClick={() => handleEdit(row.id)}>
+            <icon-ic-round-edit class="mr-4px text-icon" />
             {$t('common.edit')}
           </ElButton>
           {row.status === 'enable' ? (
             <ElButton link type="warning" size="small" onClick={() => handleDisable(row.id)}>
+              <icon-ic-round-block class="mr-4px text-icon" />
               {$t('page.manage.common.status.disable')}
             </ElButton>
           ) : (
             <ElButton link type="success" size="small" onClick={() => handleEnable(row.id)}>
+              <icon-ic-round-check-circle class="mr-4px text-icon" />
               {$t('page.manage.common.status.enable')}
             </ElButton>
           )}
@@ -85,6 +88,7 @@ const { columns, data, loading, getData, getDataByPage, mobilePagination } = use
             {{
               reference: () => (
                 <ElButton link type="danger" size="small">
+                  <icon-ic-round-delete class="mr-4px text-icon" />
                   {$t('common.delete')}
                 </ElButton>
               )
@@ -156,8 +160,18 @@ function resetSearchParams() {
           </ElFormItem>
         </div>
         <div class="flex gap-8px">
-          <ElButton type="primary" @click="() => getDataByPage()">{{ $t('common.search') }}</ElButton>
-          <ElButton @click="resetSearchParams">{{ $t('common.reset') }}</ElButton>
+          <ElButton type="primary" @click="() => getDataByPage()">
+            <template #icon>
+              <icon-ic-round-search class="text-icon" />
+            </template>
+            {{ $t('common.search') }}
+          </ElButton>
+          <ElButton @click="resetSearchParams">
+            <template #icon>
+              <icon-ic-round-refresh class="text-icon" />
+            </template>
+            {{ $t('common.reset') }}
+          </ElButton>
         </div>
       </div>
     </ElCard>
@@ -168,11 +182,24 @@ function resetSearchParams() {
         <div class="flex items-center justify-between">
           <p>{{ $t('page.manage.i18n.title') }}</p>
           <div class="flex gap-8px">
-            <ElButton type="primary" @click="handleAdd">{{ $t('page.manage.i18n.addI18n') }}</ElButton>
+            <ElButton type="primary" @click="handleAdd">
+              <template #icon>
+                <icon-ic-round-add class="text-icon" />
+              </template>
+              {{ $t('page.manage.i18n.addI18n') }}
+            </ElButton>
             <ElButton type="danger" :disabled="checkedRowKeys.length === 0" @click="handleBatchDelete">
+              <template #icon>
+                <icon-ic-round-delete class="text-icon" />
+              </template>
               {{ $t('common.batchDelete') }}
             </ElButton>
-            <ElButton @click="getData">{{ $t('common.refresh') }}</ElButton>
+            <ElButton @click="getData">
+              <template #icon>
+                <icon-ic-round-refresh class="text-icon" />
+              </template>
+              {{ $t('common.refresh') }}
+            </ElButton>
           </div>
         </div>
       </template>

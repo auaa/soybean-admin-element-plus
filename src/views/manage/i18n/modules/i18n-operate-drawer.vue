@@ -56,7 +56,14 @@ function createDefaultModel(): Model {
 type RuleKey = Extract<keyof Model, 'i18nCode' | 'lang' | 'i18nContent' | 'status'>;
 
 const rules: Record<RuleKey, App.Global.FormRule> = {
-  i18nCode: defaultRequiredRule,
+  i18nCode: [
+    defaultRequiredRule,
+    {
+      pattern: /^[a-zA-Z0-9.]+$/,
+      message: 'I18n code can only contain letters, numbers, and dots',
+      trigger: 'blur'
+    }
+  ] as App.Global.FormRule,
   lang: defaultRequiredRule,
   i18nContent: defaultRequiredRule,
   status: defaultRequiredRule
@@ -66,6 +73,12 @@ const languageOptions = [
   { label: $t('page.manage.i18n.languages.zhCN'), value: 'zh-CN' },
   { label: $t('page.manage.i18n.languages.enUS'), value: 'en-US' }
 ];
+
+// Function to filter input to only allow letters, numbers, and dots
+function handleI18nCodeInput(value: string) {
+  const filteredValue = value.replace(/[^a-zA-Z0-9.]/g, '');
+  model.value.i18nCode = filteredValue;
+}
 
 function handleInitModel() {
   model.value = createDefaultModel();
@@ -110,7 +123,11 @@ watch(visible, () => {
   <ElDrawer v-model="visible" :title="title" :size="360">
     <ElForm ref="formRef" :model="model" :rules="rules" label-position="top">
       <ElFormItem :label="$t('page.manage.i18n.form.i18nCode')" prop="i18nCode">
-        <ElInput v-model="model.i18nCode" :placeholder="$t('page.manage.i18n.i18nCodePlaceholder')" />
+        <ElInput
+          v-model="model.i18nCode"
+          :placeholder="$t('page.manage.i18n.i18nCodePlaceholder')"
+          @input="handleI18nCodeInput"
+        />
       </ElFormItem>
       <ElFormItem :label="$t('page.manage.i18n.form.language')" prop="lang">
         <ElRadioGroup v-model="model.lang">
