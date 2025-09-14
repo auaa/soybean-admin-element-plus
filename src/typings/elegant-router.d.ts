@@ -34,6 +34,7 @@ declare module "@elegant-router/types" {
     "manage_role": "/manage/role";
     "manage_user": "/manage/user";
     "manage_user-detail": "/manage/user-detail/:id";
+    "manage_value-set": "/manage/value-set";
     "user-center": "/user-center";
   };
 
@@ -108,6 +109,7 @@ declare module "@elegant-router/types" {
     | "manage_role"
     | "manage_user-detail"
     | "manage_user"
+    | "manage_value-set"
     | "user-center"
   >;
 

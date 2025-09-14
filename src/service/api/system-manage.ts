@@ -101,3 +101,55 @@ export function disableErrorCode(id: number) {
     method: 'post'
   });
 }
+
+/** get value set children by parent id */
+export function fetchGetValueSetTree(parentId: number) {
+  return request<Api.SystemManage.ValueSetTree[]>({
+    url: '/api/vs/list',
+    method: 'post',
+    data: {
+      keywords: '',
+      parentVsId: parentId
+    }
+  });
+}
+
+/** get value set by id */
+export function fetchGetValueSetById(id: number) {
+  return request<Api.SystemManage.ValueSet>({
+    url: `/api/vs/${id}`,
+    method: 'get'
+  });
+}
+
+export type ValueSetModel = Pick<
+  Api.SystemManage.ValueSet,
+  'vsCode' | 'vsName' | 'vsValue' | 'sort' | 'parentPath' | 'status' | 'description'
+>;
+
+/** add new value set */
+export function addValueSet(data: ValueSetModel & { parentValueSet?: { id: number } }) {
+  return request<null>({
+    url: '/api/vs/create',
+    method: 'post',
+    data
+  });
+}
+
+/** update value set */
+export function updateValueSet(data: ValueSetModel & { id: number; parentValueSet?: { id: number } }) {
+  return request<null>({
+    url: '/api/vs/update',
+    method: 'post',
+    data
+  });
+}
+
+/** delete single value set */
+export function deleteSingleValueSet(id: number) {
+  return request<null>({
+    url: `/api/vs/delete`,
+    method: 'post',
+    params: { id }
+  });
+}

@@ -152,6 +152,17 @@ export const generatedRoutes: GeneratedRoute[] = [
           hideInMenu: true,
           activeMenu: 'manage_user'
         }
+      },
+      {
+        name: 'manage_value-set',
+        path: '/manage/value/set',
+        component: 'view.manage_value-set',
+        meta: {
+          title: 'manage_value-set',
+          i18nKey: 'route.manage_value-set',
+          icon: 'material-symbols:dataset',
+          order: 5
+        }
       }
     ]
   },

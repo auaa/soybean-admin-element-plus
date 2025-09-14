@@ -170,10 +170,42 @@ declare namespace Api {
 
     /** error code search params */
     type ErrorCodeSearchParams = CommonType.RecordNullable<
-      Pick<Api.SystemManage.ErrorCode, 'errorCode' | 'errorMessage' | 'lang' | 'errorType' | 'status'> & CommonSearchParams
+      Pick<Api.SystemManage.ErrorCode, 'errorCode' | 'errorMessage' | 'lang' | 'errorType' | 'status'> &
+        CommonSearchParams
     >;
 
     /** error code list */
     type ErrorCodeList = Common.PaginatingQueryRecord<ErrorCode>;
+
+    /** value set */
+    type ValueSet = Common.CommonRecord<{
+      /** value set code */
+      vsCode: string;
+      /** display name */
+      vsName: string;
+      /** value */
+      vsValue: string;
+      /** sort order */
+      sort: number;
+      /** parent path */
+      parentPath: string;
+      /** description */
+      description?: string;
+    }>;
+
+    /** value set search params */
+    type ValueSetSearchParams = CommonType.RecordNullable<
+      Pick<Api.SystemManage.ValueSet, 'vsCode' | 'vsName' | 'vsValue' | 'status'> & CommonSearchParams
+    >;
+
+    /** value set tree */
+    type ValueSetTree = {
+      id: number;
+      vsName: string;
+      vsCode: string;
+      pId: number;
+      leafFlag: boolean;
+      children?: ValueSetTree[];
+    };
   }
 }

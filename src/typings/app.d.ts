@@ -655,6 +655,37 @@ declare namespace App {
               network: string;
             };
           };
+          valueSet: {
+            title: string;
+            treeTitle: string;
+            formTitle: string;
+            valueSetCode: string;
+            displayName: string;
+            value: string;
+            sort: string;
+            parentPath: string;
+            status: string;
+            description: string;
+            valueSetCodePlaceholder: string;
+            displayNamePlaceholder: string;
+            valuePlaceholder: string;
+            sortPlaceholder: string;
+            parentPathPlaceholder: string;
+            statusPlaceholder: string;
+            descriptionPlaceholder: string;
+            valueSetCodeRequired: string;
+            valueSetCodeFormat: string;
+            displayNameRequired: string;
+            valueRequired: string;
+            statusRequired: string;
+            pleaseSelectNode: string;
+            loadDetailError: string;
+            updateError: string;
+            addError: string;
+            loadChildrenError: string;
+            addRoot: string;
+            addChild: string;
+          };
         };
       };
       form: {
